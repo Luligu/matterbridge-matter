@@ -15,11 +15,7 @@ export default function initializePlugin(matterbridge: PlatformMatterbridge, log
 }
 
 export class MatterPlatform extends MatterbridgeDynamicPlatform {
-  constructor(
-    matterbridge: PlatformMatterbridge,
-    log: AnsiLogger,
-    override config: PlatformConfig,
-  ) {
+  constructor(matterbridge: PlatformMatterbridge, log: AnsiLogger, config: PlatformConfig) {
     super(matterbridge, log, config);
 
     // Verify that Matterbridge is the correct version

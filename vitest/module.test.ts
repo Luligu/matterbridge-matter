@@ -83,7 +83,12 @@ describe('TestPlatform', () => {
     expect(loggerInfoSpy).toHaveBeenCalledWith('onShutdown called with reason: Test reason');
   });
 
-  it('should call unregister devices if configured', async () => {
+  it('should restart and unregister devices if configured', async () => {
+    platform = new MatterPlatform(matterbridge, log, config);
+    addMatterbridge(platform);
+    expect(loggerInfoSpy).toHaveBeenCalledWith(`Initializing platform: ${config.name}`);
+    expect(loggerInfoSpy).toHaveBeenCalledWith(`Finished initializing platform: ${config.name}`);
+
     await platform.onStart();
     expect(loggerInfoSpy).toHaveBeenCalledWith('onStart called with reason: No reason provided');
 
